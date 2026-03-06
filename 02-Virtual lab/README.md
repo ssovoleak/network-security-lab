@@ -56,12 +56,12 @@ Generat key pair on Mac:
 
 Changes made to sshd_config:
 
-- PermitRootlogin : no | root should never be directly accessible |
-- PasswordAuthentication : no | eliminate brute force risk |
-- MaxAuthTries : 3 | Limit login attempts to 3 times |
-- LoginGraceTime : 30s | reduce the risk of attack window |
-- X11Forwarding : no | Unnecessary on a server |
-- ClientAliveInterval : 60 | detect and close ghost connections |
+- `PermitRootlogin` : no | root should never be directly accessible |
+- `PasswordAuthentication` : no | eliminate brute force risk |
+- `MaxAuthTries` : 3 | Limit login attempts to 3 times |
+- `LoginGraceTime` : 30s | reduce the risk of attack window |
+- `X11Forwarding` : no | Unnecessary on a server |
+- `ClientAliveInterval` : 60 | detect and close ghost connections |
 
 One issue I ran into - Ubuntu 24.04 has an extra config file at `/etc/ssh/sshd_config.d/50-cloud-init.conf` that was overriding my changes with `PasswordAuthentication yes`. I had to update both files for the setting to actually take effect.
 
@@ -69,12 +69,12 @@ Verified the hardening worked:
 
 #### password auth blocked
 
-ssh -o PreferredAuthentication=password voleak@192.168.64.2
---> Permission denied (publickey)
+`ssh -o PreferredAuthentication=password voleak@192.168.64.2`
+-> Permission denied (publickey)
 
 #### Root login blocked
 
-ssh root@192.168.64.2
+`ssh root@192.168.64.2`
 -> Permission denied
 
 ### 3. User Management
@@ -88,8 +88,8 @@ Created 2 users to practice access control:
 Practicing the principle of least privilege, users should only have access to what they actually need. If an attacker compromises a standard user account, the damage is limited. However, if they compromise an admin account, the issue is much bigger.
 
 Verified that standarduser couldn't run sudo:
-su - standarduser
-sudo apt update
+`su - standarduser`
+`sudo apt update`
 -> standarduser is not in the sudoers file
 
 ### 4. File Permissions
@@ -119,19 +119,19 @@ Used ufw to control what traffic is allowed in and out of the VM.
 
 Set the defaults:
 
-sudo ufw default deny incoming #block everything by default
-sudo ufw allow outgoing #VM can reach internet freely
+`sudo ufw default deny incoming` #block everything by default
+`sudo ufw default allow outgoing` #VM can reach internet freely
 
 Allow SSH before enabling the firewall, If the firewall is enabled before SSH, I would get locked out immediately :
 
-sudo ufw allow 22
-sudo ufw enable
+`sudo ufw allow 22`
+`sudo ufw enable`
 
 The most interesting thing I learned here is that firewall rules order matters. ufw processes rules from top to bottom and stops at the first match. I tested this by adding a deny rule for my Mac's IP but placing it after the allow rule for port 22 - SSH still worked because the allow rule matched first and the deny rule was never reached.
 
 The fix was to insert the deny rule in the first position so it gets checked first:
 
-sudo ufw insert 1 deny from 192.168.64.1
+`sudo ufw insert 1 deny from 192.168.64.1`
 
 I have also learned the difference between filtered and and closed ports when testing curl from my Mac:
 
@@ -146,7 +146,7 @@ A few things that I've fully understood after building this:
 
 The order of operations matters more than I expected. Whether it's setting up SSH keys before disabling passwords, or adding firewall allow rules before enabling the firewall - getting the sequnce wrong can lock you out immediately.
 
-Everything in Linux is a file with a config. Once we know to look in the right place such as /etc/ we can find and understand how almost any service is configured. The pattern is the same everywhere: commented out lines show defaults, uncomment and change to override the defaults.
+Everything in Linux is a file with a config. Once we know to look in the right place such as `/etc/` we can find and understand how almost any service is configured. The pattern is the same everywhere: commented out lines show defaults, uncomment and change to override the defaults.
 
 ## Limitations and Future Improvements
 
