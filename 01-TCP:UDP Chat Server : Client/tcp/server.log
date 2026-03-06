@@ -1,0 +1,32 @@
+2026-03-02 11:30:43 | Server started | Listening on port 22341
+2026-03-02 11:31:59 | New Connectio | IP: 192.168.64.1 | Ephemeral Port: 49811
+2026-03-02 11:32:02 | MESSAGE | IP:192.168.64.1 | Ephemeral Port: 49811
+2026-03-02 11:32:34 | New Connectio | IP: 192.168.64.2 | Ephemeral Port: 52712
+2026-03-02 11:32:43 | MESSAGE | IP:192.168.64.2 | Ephemeral Port: 52712
+2026-03-02 11:33:03 | MESSAGE | IP:192.168.64.1 | Ephemeral Port: 49811
+2026-03-02 11:33:18 | MESSAGE | IP:192.168.64.2 | Ephemeral Port: 52712
+2026-03-02 11:53:03 | New Connectio | IP: 192.168.64.2 | Ephemeral Port: 51334
+2026-03-02 11:53:17 | MESSAGE | IP:192.168.64.2 | Ephemeral Port: 51334
+2026-03-02 11:57:57 | MESSAGE | IP:192.168.64.2 | Ephemeral Port: 51334
+2026-03-02 11:57:57 | EXIT REQUEST | IP: 192.168.64.2 | Ephemeral Port: 51334
+2026-03-02 11:58:45 | MESSAGE | IP:192.168.64.2 | Ephemeral Port: 52712
+2026-03-03 11:13:51 | Server started | Listening on port 22341
+2026-03-03 11:14:28 | Server started | Listening on port 22341
+2026-03-03 11:14:48 | New Connection | IP: 127.0.0.1 | Ephemeral Port: 50337
+2026-03-03 11:14:52 | MESSAGE | IP:127.0.0.1 | Ephemeral Port: 50337 | Message: Hello
+2026-03-03 11:15:18 | New Connection | IP: 127.0.0.1 | Ephemeral Port: 50340
+2026-03-03 11:15:23 | MESSAGE | IP:127.0.0.1 | Ephemeral Port: 50340 | Message: Good morning
+2026-03-03 11:15:37 | MESSAGE | IP:127.0.0.1 | Ephemeral Port: 50340 | Message: How r u
+2026-03-03 11:17:15 | DISCONNECTED | IP: 127.0.0.1 | Ephemeral Port: 50340
+2026-03-03 11:17:19 | MESSAGE | IP:127.0.0.1 | Ephemeral Port: 50337 | Message: exit
+2026-03-03 11:17:19 | EXIT REQUEST | IP: 127.0.0.1 | Ephemeral Port: 50337
+2026-03-03 11:30:10 | Server started | Listening on port 22341
+2026-03-03 11:30:15 | New Connection | IP: 192.168.64.2 | Ephemeral Port: 60660
+2026-03-03 11:30:50 | New Connection | IP: 127.0.0.1 | Ephemeral Port: 50471
+2026-03-03 11:30:53 | MESSAGE | IP:127.0.0.1 | Ephemeral Port: 50471 | Message: hello
+2026-03-03 11:31:01 | MESSAGE | IP:192.168.64.2 | Ephemeral Port: 60660 | Message: Hi
+2026-03-03 11:31:13 | MESSAGE | IP:127.0.0.1 | Ephemeral Port: 50471 | Message: How are u?
+2026-03-03 11:31:23 | MESSAGE | IP:192.168.64.2 | Ephemeral Port: 60660 | Message: Im good, thank u
+2026-03-03 11:32:32 | MESSAGE | IP:192.168.64.2 | Ephemeral Port: 60660 | Message: exit
+2026-03-03 11:32:32 | EXIT REQUEST | IP: 192.168.64.2 | Ephemeral Port: 60660
+2026-03-03 11:32:51 | DISCONNECTED | IP: 127.0.0.1 | Ephemeral Port: 50471
