@@ -70,7 +70,7 @@ Verified the hardening worked:
 #### password auth blocked
 
 ssh -o PreferredAuthentication=password voleak@192.168.64.2
--> Permission denied (publickey)
+--> Permission denied (publickey)
 
 #### Root login blocked
 
@@ -119,13 +119,13 @@ Used ufw to control what traffic is allowed in and out of the VM.
 
 Set the defaults:
 
-- sudo ufw default deny incoming #block everything by default
-- sudo ufw allow outgoing #VM can reach internet freely
+sudo ufw default deny incoming #block everything by default
+sudo ufw allow outgoing #VM can reach internet freely
 
 Allow SSH before enabling the firewall, If the firewall is enabled before SSH, I would get locked out immediately :
 
-- sudo ufw allow 22
-- sudo ufw enable
+sudo ufw allow 22
+sudo ufw enable
 
 The most interesting thing I learned here is that firewall rules order matters. ufw processes rules from top to bottom and stops at the first match. I tested this by adding a deny rule for my Mac's IP but placing it after the allow rule for port 22 - SSH still worked because the allow rule matched first and the deny rule was never reached.
 
